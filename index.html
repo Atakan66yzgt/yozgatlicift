@@ -35,11 +35,15 @@
     /* Herz-Animation für alle Richtungen (links, rechts, unten) */
     @keyframes float {
       0% {
-        transform: translateY(100vh) translateX(0);
+        transform: translateY(100vh) translateX(100vw);
         opacity: 1;
       }
+      50% {
+        transform: translateY(-100vh) translateX(-100vw);
+        opacity: 0.5;
+      }
       100% {
-        transform: translateY(-100vh) translateX(0);
+        transform: translateY(100vh) translateX(100vw);
         opacity: 0;
       }
     }
@@ -290,6 +294,24 @@
       document.getElementById('love-text1').style.display = 'none';
       document.getElementById('love-text2').style.display = 'none';
     }
+
+    // Adding floating hearts dynamically
+    function createHeart() {
+      var heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+      heart.style.left = (Math.random() * 100) + 'vw';
+      heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+      document.body.appendChild(heart);
+
+      // Remove heart after animation ends
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    setInterval(createHeart, 500);
   </script>
 
 </body>
