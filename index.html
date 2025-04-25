@@ -35,7 +35,7 @@
         opacity: 1;
       }
       100% {
-        transform: translateY(-100vh) translateX(100vw);
+        transform: translateY(-100vh) translateX(50vw);
         opacity: 0;
       }
     }
@@ -43,16 +43,16 @@
     .typewriter {
       font-size: 1.3em;
       margin: 20px auto;
-      width: 80%;
-      white-space: nowrap;
+      max-width: 80%;
       overflow: hidden;
+      white-space: nowrap;
       border-right: 3px solid pink;
       animation: typing 5s steps(40, end), blink-caret 0.75s step-end infinite;
     }
 
     @keyframes typing {
-      from { width: 0 }
-      to { width: 80% }
+      from { max-width: 0 }
+      to { max-width: 80% }
     }
 
     @keyframes blink-caret {
@@ -152,7 +152,7 @@
   </div>
 
   <audio autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    <source src="https://www.mboxdrive.com/Sezen%20Aksu%20-%20G%C3%BCl%C3%BCmse.mp3" type="audio/mpeg">
   </audio>
 
   <script>
@@ -160,14 +160,14 @@
       const heart = document.createElement('div');
       heart.innerHTML = ['❤️','💖','💕'][Math.floor(Math.random()*3)];
       heart.className = 'heart';
-      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.left = (window.innerWidth / 2 - 100 + Math.random() * 200) + 'px';
       heart.style.top = Math.random() * window.innerHeight + 'px';
       heart.style.animationDuration = (3 + Math.random() * 4) + 's';
-      heart.style.fontSize = (20 + Math.random() * 24) + 'px';
+      heart.style.fontSize = (16 + Math.random() * 24) + 'px';
       document.body.appendChild(heart);
       setTimeout(() => document.body.removeChild(heart), 10000);
     }
-    setInterval(createHearts, 150);
+    setInterval(createHearts, 100);
 
     function showLove() {
       document.getElementById('love-part').style.display = 'block';
