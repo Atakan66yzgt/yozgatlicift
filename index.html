@@ -43,7 +43,7 @@
     .typewriter {
       font-size: 1.3em;
       margin: 20px auto;
-      max-width: 80%;
+      max-width: 600px;
       overflow: hidden;
       white-space: nowrap;
       border-right: 3px solid pink;
@@ -52,7 +52,7 @@
 
     @keyframes typing {
       from { max-width: 0 }
-      to { max-width: 80% }
+      to { max-width: 600px }
     }
 
     @keyframes blink-caret {
@@ -114,11 +114,31 @@
       color: #888;
       margin-top: 10px;
     }
+
+    .intro-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px auto;
+    }
+
+    .intro-gallery img {
+      width: 240px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
   </style>
 </head>
 <body>
 
   <h1>Senin için, Esma ❤️</h1>
+
+  <div class="intro-gallery">
+    <img src="https://i.pinimg.com/originals/4f/b7/4d/4fb74d32ac6db189bfa23e8cbdb89e52.jpg" alt="Romantik çift 1">
+    <img src="https://i.pinimg.com/originals/91/0c/8b/910c8b0cc1e4078f9e01e67b4a5c5a3f.jpg" alt="Eski tarz aşk">
+    <img src="https://i.pinimg.com/originals/d5/f5/17/d5f5171186b0502269a6408620b4c8d6.jpg" alt="Sevgi dolu an">
+  </div>
 
   <div class="typewriter">Seni düşündüğümde, kalbim kelebeklerle doluyor. 💌</div>
 
@@ -160,7 +180,7 @@
       const heart = document.createElement('div');
       heart.innerHTML = ['❤️','💖','💕'][Math.floor(Math.random()*3)];
       heart.className = 'heart';
-      heart.style.left = (window.innerWidth / 2 - 100 + Math.random() * 200) + 'px';
+      heart.style.left = (window.innerWidth / 2 - 150 + Math.random() * 300) + 'px';
       heart.style.top = Math.random() * window.innerHeight + 'px';
       heart.style.animationDuration = (3 + Math.random() * 4) + 's';
       heart.style.fontSize = (16 + Math.random() * 24) + 'px';
