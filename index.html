@@ -13,6 +13,7 @@
       font-family: 'Arial', sans-serif;
       color: #d23669;
       text-align: center;
+      position: relative;
     }
 
     h1 {
@@ -28,6 +29,7 @@
       animation: float 10s linear infinite;
       user-select: none;
       pointer-events: none;
+      z-index: -1;
     }
 
     @keyframes float {
@@ -38,6 +40,22 @@
       100% {
         transform: translateY(-100vh) translateX(0);
         opacity: 0;
+      }
+    }
+
+    /* Herz-Animation für alle Richtungen (links, rechts, unten) */
+    @keyframes floatLeftRight {
+      0% {
+        transform: translateY(100vh) translateX(-50vw);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-100vh) translateX(50vw);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 1;
       }
     }
 
@@ -236,26 +254,19 @@
     </div>
   </div>
 
-  <audio autoplay loop>
-    <source src="sezen_aksu.mp3" type="audio/mpeg">
-  </audio>
+  <!-- Buttons for Love Texts -->
+  <div class="question">
+    <button class="btn" onclick="showText1()">Aşkımı Hisset</button>
+    <button class="btn" onclick="showText2()">Sonsuz Sevgi</button>
+    <button class="btn" onclick="showText3()">Birlikte Gelecek</button>
+  </div>
 
-  <script>
-    function createHearts() {
-      const heart = document.createElement('div');
-      heart.innerHTML = ['❤️','💖','💕'][Math.floor(Math.random()*3)];
-      heart.className = 'heart';
-      heart.style.left = (window.innerWidth / 2 - 150 + Math.random() * 300) + 'px';
-      heart.style.top = Math.random() * window.innerHeight + 'px';
-      heart.style.animationDuration = (3 + Math.random() * 4) + 's';
-      heart.style.fontSize = (16 + Math.random() * 24) + 'px';
-      document.body.appendChild(heart);
-      setTimeout(() => document.body.removeChild(heart), 10000);
-    }
-    setInterval(createHearts, 100);
+  <div id="love-text1" style="display:none;">
+    <p>Seninle her şey mümkün, her an bir masal gibi... ❤️</p>
+  </div>
 
-    function showLove() {
-      document.getElementById('love-part').style.display = 'block';
-    }
+  <div id="love-text2" style="display:none;">
+    <p>Sonsuza kadar seninle olmak, hayattaki en büyük hayalim. 💕</p>
+  </div>
 
-    function openGift
+  <div id="love-text3" style="display:none;">
