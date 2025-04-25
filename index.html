@@ -1,108 +1,104 @@
+Um sicherzustellen, dass die Musik automatisch abgespielt wird, wenn die Seite geladen wird, kannst du das `autoplay`-Attribut im `<iframe>`-Tag hinzufügen. Allerdings gibt es einige Einschränkungen, die du beachten solltest:
+
+1. **Autoplay-Beschränkungen**: Viele Browser erlauben das automatische Abspielen von Audio nur, wenn die Seite stummgeschaltet ist oder der Benutzer zuvor mit der Seite interagiert hat. Das bedeutet, dass es möglicherweise nicht immer funktioniert, wenn du versuchst, Musik automatisch abzuspielen.
+
+2. **YouTube-Player**: Der YouTube-Player unterstützt das `autoplay`-Attribut nicht direkt im `<iframe>`. Stattdessen kannst du die URL des Videos anpassen, um das automatische Abspielen zu aktivieren.
+
+Hier ist der aktualisierte HTML-Code, der das automatische Abspielen der Musik beim Laden der Seite ermöglicht:
+
+```html
 <!DOCTYPE html>
-2<html lang="de">
-3<head>
-4  <meta charset="UTF-8">
-5  <title>Für dich 💌</title>
-6  <style>
-7    body {
-8      background-color: #fff0f5;
-9      font-family: 'Arial', sans-serif;
-10      text-align: center;
-11      padding: 40px;
-12      color: #333;
-13      display: flex;
-14      justify-content: space-between;
-15    }
-16    .content {
-17      flex: 1;
-18      padding: 20px;
-19    }
-20    h1 {
-21      color: #e91e63;
-22      font-size: 2.5em;
-23    }
-24    p {
-25      font-size: 1.2em;
-26      margin: 10px 0;
-27    }
-28    .question {
-29      margin: 20px 0;
-30    }
-31    input, textarea {
-32      width: 90%;
-33      padding: 10px;
-34      border: 1px solid #ccc;
-35      border-radius: 10px;
-36      margin-top: 10px;
-37      font-size: 1em;
-38    }
-39    button {
-40      margin-top: 20px;
-41      background-color: #ff69b4;
-42      color: white;
-43      border: none;
-44      padding: 15px 30px;
-45      border-radius: 20px;
-46      font-size: 1.2em;
-47      cursor: pointer;
-48    }
-49    .heart {
-50      font-size: 4em;
-51      color: #ff1493;
-52      animation: heartbeat 1s infinite;
-53      margin-bottom: 20px;
-54    }
-55    @keyframes heartbeat {
-56      0% { transform: scale(1); }
-57      50% { transform: scale(1.2); }
-58      100% { transform: scale(1); }
-59    }
-60    .cat-meme {
-61      width: 200px;
-62      height: auto;
-63      margin: 20px;
-64    }
-65  </style>
-66</head>
-67<body>
-68  <div class="content">
-69    <audio controls autoplay loop>
-70      <source src="https://youtu.be/qol0bBbcm44?si=gycWUnUKGSo-LXKC" type="audio/mpeg">
-71      Ihr Browser unterstützt keine Audio-Elemente.
-72    </audio>
-73    <div class="heart">❤️</div>
-74    <h1>Seninle her şey daha güzel</h1>
-75    <p>Hayatımda olduğun için şükrediyorum. Sana bakınca geleceğimi görüyorum.</p>
-76
-77    <form action="https://formsubmit.co/oktaymete2004@gmail.com" method="POST">
-78      <div class="question">
-79        <p>Was ist dir in unserer Beziehung am wichtigsten?</p>
-80        <textarea name="important_thing" required></textarea>
-81      </div>
-82      <div class="question">
-83        <p>Wie sieht dein Traum-Date aus?</p>
-84        <textarea name="dream_date" required></textarea>
-85      </div>
-86      <div class="question">
-87        <p>Was macht dich am glücklichsten?</p>
-88        <textarea name="happy_thing" required></textarea>
-89      </div>
-90      <div class="question">
-91        <p>Was kann ich tun, damit du dich noch besonderer fühlst?</p>
-92        <textarea name="special_feeling" required></textarea>
-93      </div>
-94      <button type="submit">Antworten absenden 💌</button>
-95    </form>
-96
-97    <br><br>
-98    <button onclick="document.getElementById('love').style.display='block'">Ich liebe dich ❤️</button>
-99    <div id="love" style="display:none; font-size:1.5em; margin-top:20px;">Du bist mein Ein und Alles 💘</div>
-100  </div>
-101
-102  <div class="sidebar">
-103    <img class="cat-meme" src="https://i.imgur.com/1.jpg" alt="Süße Katze 1">
-104    <img class="cat-meme" src="https://i.imgur.com/2.jpg" alt="Süße Katze 2">
-105    <img class="cat-meme" src="https://i.imgur.com/3.jpg" alt="Süße Katze 3">
-106  </div>
-107</body>
-108</html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Für dich 💌</title>
+  <style>
+    body {
+      background-color: #fff0f5; /* Rosa Hintergrund */
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 40px;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    h1 {
+      color: #e91e63; /* Pinke Schriftfarbe */
+      font-size: 2.5em;
+    }
+    p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    input, textarea {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-top: 10px;
+      font-size: 1em;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #ff69b4; /* Helles Pink */
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .heart {
+      font-size: 4em;
+      color: #ff1493; /* Intensives Pink */
+      animation: heartbeat 1s infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .cat-meme {
+      width: 200px; /* Breite der Katzenbilder */
+      height: auto;
+      margin: 20px;
+      border-radius: 10px; /* Abgerundete Ecken */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten für Tiefe */
+    }
+    .sidebar {
+      display: flex;
+      justify-content: space-around; /* Gleichmäßige Verteilung */
+      width: 100%; /* Volle Breite */
+      margin-top: 20px; /* Abstand nach oben */
+    }
+  </style>
+</head>
+<body>
+  <div class="heart">❤️</div>
+  <h1>Seninle her şey daha güzel</h1>
+  <p>Hayatımda olduğun için şükrediyorum. Sana bakınca geleceğimi görüyorum.</p>
+
+  <!-- YouTube-Embed für die Musik mit autoplay -->
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/qol0bBbcm44?autoplay=1&mute=1&loop=1&playlist=qol0bBbcm44" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  <form action="https://formsubmit.co/oktaymete2004@gmail.com" method="POST">
+    <div class="question">
+      <p>Was ist dir in unserer Beziehung am wichtigsten?</p>
+      <textarea name="important_thing" required></textarea>
+    </div>
+    <div class="question">
+      <p>Wie sieht dein Traum-Date aus?</p>
+      <textarea name="dream_date" required></textarea>
+    </div>
+    <div class="question">
+      <p>Was macht dich am glücklichsten?</p>
+      <textarea name="happy_thing" required></textarea>
+    </div>
+    <div class="question">
+      <p>Was kann ich tun, damit du dich noch
