@@ -13,7 +13,7 @@
       color: #d23669;
       text-align: center;
       position: relative;
-      overflow-y: auto;
+      overflow: hidden;
     }
 
     h1 {
@@ -43,7 +43,6 @@
       }
     }
 
-    /* Heart from the top */
     .heart-top {
       animation: float-top 10s linear infinite;
     }
@@ -157,22 +156,38 @@
       margin-top: 10px;
     }
 
-    .intro-gallery {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 20px auto;
+    /* Bubble style for typing */
+    .bubble-container {
+      margin: 40px auto;
+      width: 90%;
+      max-width: 600px;
+      padding: 10px;
+      border-radius: 15px;
+      background-color: #f1f1f1;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .intro-gallery img {
+    .bubble-input {
       width: 100%;
-      max-width: 240px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      padding: 12px;
+      border-radius: 20px;
+      border: 1px solid #ff6b81;
+      font-size: 1.1em;
+      box-sizing: border-box;
     }
 
-    /* Responsiveness for smaller screens */
+    .bubble-submit {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #ff477e;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+
+    /* Responsiveness */
     @media (max-width: 768px) {
       h1 {
         font-size: 2em;
@@ -190,18 +205,6 @@
       .btn {
         padding: 10px 20px;
         font-size: 1em;
-      }
-
-      .question {
-        font-size: 1.3em;
-      }
-
-      .intro-gallery img {
-        max-width: 200px;
-      }
-
-      #gift-box {
-        font-size: 2.5em;
       }
     }
 
@@ -223,18 +226,6 @@
         padding: 8px 16px;
         font-size: 0.9em;
       }
-
-      .question {
-        font-size: 1.1em;
-      }
-
-      .intro-gallery img {
-        max-width: 180px;
-      }
-
-      #gift-box {
-        font-size: 2em;
-      }
     }
   </style>
 </head>
@@ -249,104 +240,65 @@
   <h1>Senin için, Esma ❤️</h1>
 
   <!-- Hearts Floating -->
-  <div class="heart heart-top">❤️</div>
-  <div class="heart">❤️</div>
-
-  <div class="intro-gallery">
-    <img src="https://github.com/user-attachments/assets/8397ad00-2c34-4ff0-9d80-4583a106a856" alt="Tatlı kedi">
-    <img src="https://github.com/user-attachments/assets/202a4850-b606-4f36-9ebe-b896390a7662" alt="Kedi kalp">
-    <img src="https://github.com/user-attachments/assets/8397ad00-2c34-4ff0-9d80-4583a106a856" alt="Kedili fotoğraf">
-  </div>
+  <div id="hearts"></div>
 
   <div class="typewriter">Seni düşündüğümde, kalbim kelebeklerle doluyor. 💌</div>
 
-  <div class="question">
-    Benimle birlikte olmak ister misin? 🥺
-    <div>
-      <button class="btn" onclick="showLove()">Evet! ❤️</button>
-      <button class="btn" onclick="alert('Ben seni yine de sevmeye devam edeceğim... 😢')">Hayır 😢</button>
-    </div>
-    <div class="hint">Cevabını seçmek için yukarıdaki düğmelere tıkla.</div>
+  <div class="bubble-container">
+    <textarea id="dreamInput" class="bubble-input" placeholder="Hayallerini buraya yaz..."></textarea>
+    <button class="bubble-submit" onclick="submitDream()">Hayalimi Gönder</button>
   </div>
 
-  <div id="love-part" style="display:none">
-    <div class="typewriter" style="animation-delay: 1s;">Harika! Artık seninle bir kalbimiz var. 💘</div>
-
-    <div class="gallery">
-      <img src="https://github.com/user-attachments/assets/83174e82-b112-46b6-b1f9-b91a216d88ec" alt="Tatlı kedi">
-      <img src="https://github.com/user-attachments/assets/96681c61-5076-4193-becc-a7b34ceef13b" alt="Kedi kalp">
-      <img src="https://github.com/user-attachments/assets/34de4630-4a72-408f-bcd6-669e72b5f39e" alt="Kedili fotoğraf">
-    </div>
-
-    <div id="gift-box" onclick="openGift()">🎁</div>
-    <div id="gift-message">Bu kalp sana ait ❤️ Her zaman seninim, Esma 🌹</div>
-
-    <div style="margin: 40px auto;">
-      <img src="https://github.com/user-attachments/assets/410c7625-9189-4df8-9e88-13e7b07aa855" alt="Birlikte geleceğimiz" style="width: 300px; border-radius: 15px;">
-      <p>Birlikte bir ev, bir kedi ve sonsuz sevgi... 💑🐱</p>
-    </div>
-  </div>
-
-  <!-- Buttons for Love Texts -->
-  <div class="question">
-    <button class="btn" onclick="showText1()">Aşkımı Hisset</button>
-    <button class="btn" onclick="showText2()">Sonsuz Sevgi</button>
-    <button class="btn" onclick="showText3()">Birlikte Gelecek</button>
-  </div>
-
-  <div id="love-text1" style="display:none;">
-    <p>Seninle her şey mümkün, her an bir masal gibi... ❤️</p>
-  </div>
-
-  <div id="love-text2" style="display:none;">
-    <p>Sonsuza kadar seninle olmak, hayattaki en büyük hayalim. 💕</p>
-  </div>
-
-  <div id="love-text3" style="display:none;">
-    <p>Birlikte tüm dünyayı gezip, en güzel anıları biriktireceğiz. 🌍</p>
-  </div>
+  <div id="gift-box" onclick="openGift()">🎁</div>
+  <div id="gift-message">Bu kalp sana ait ❤️ Her zaman seninim, Esma 🌹</div>
 
   <div class="question">
-    <button class="btn" onclick="openWishList()">Hayallerimizi Yaz!</button>
-  </div>
-
-  <div id="wish-list" style="display: none;">
-    <ul>
-      <li>Birlikte dünyayı gezmek 🌍</li>
-      <li>Evde kahve keyfi yapmak ☕</li>
-      <li>Sonsuz mutlu anılar biriktirmek 📸</li>
-    </ul>
+    <button class="btn" onclick="showLove()">Evet! ❤️</button>
+    <button class="btn" onclick="alert('Ben seni yine de sevmeye devam edeceğim... 😢')">Hayır 😢</button>
   </div>
 
   <script>
-    function showLove() {
-      document.getElementById('love-part').style.display = 'block';
+    // Spawn hearts from top and bottom
+    function spawnHearts() {
+      for (let i = 0; i < 20; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+
+        // Randomly position hearts
+        let positionX = Math.random() * window.innerWidth;
+        let direction = Math.random() < 0.5 ? "heart-top" : "";
+        heart.style.left = positionX + "px";
+        
+        // Add animation for floating hearts from both top and bottom
+        heart.classList.add(direction);
+
+        document.getElementById("hearts").appendChild(heart);
+      }
     }
 
+    // Trigger spawning hearts on load
+    spawnHearts();
+
+    // Submit dream to owner (currently a simple alert)
+    function submitDream() {
+      let dreamMessage = document.getElementById('dreamInput').value;
+      if (dreamMessage) {
+        alert("Hayalinizi aldım: " + dreamMessage);
+        document.getElementById('dreamInput').value = '';  // Clear input field
+      } else {
+        alert("Lütfen bir şey yazın!");
+      }
+    }
+
+    // Open gift box
     function openGift() {
       document.getElementById('gift-message').style.display = 'block';
     }
 
-    function showText1() {
-      document.getElementById('love-text1').style.display = 'block';
-      document.getElementById('love-text2').style.display = 'none';
-      document.getElementById('love-text3').style.display = 'none';
-    }
-
-    function showText2() {
-      document.getElementById('love-text2').style.display = 'block';
-      document.getElementById('love-text1').style.display = 'none';
-      document.getElementById('love-text3').style.display = 'none';
-    }
-
-    function showText3() {
-      document.getElementById('love-text3').style.display = 'block';
-      document.getElementById('love-text1').style.display = 'none';
-      document.getElementById('love-text2').style.display = 'none';
-    }
-
-    function openWishList() {
-      document.getElementById('wish-list').style.display = 'block';
+    // Show love section
+    function showLove() {
+      alert("Aşk mesajı gönderildi!");
     }
   </script>
 
