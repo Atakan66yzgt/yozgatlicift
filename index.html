@@ -35,7 +35,7 @@
         opacity: 1;
       }
       100% {
-        transform: translateY(-100vh) translateX(50vw);
+        transform: translateY(-100vh) translateX(-50vw);
         opacity: 0;
       }
     }
@@ -44,15 +44,15 @@
       font-size: 1.3em;
       margin: 20px auto;
       max-width: 600px;
-      overflow: hidden;
       white-space: nowrap;
       border-right: 3px solid pink;
+      overflow: hidden;
       animation: typing 5s steps(40, end), blink-caret 0.75s step-end infinite;
     }
 
     @keyframes typing {
-      from { max-width: 0 }
-      to { max-width: 600px }
+      from { width: 0 }
+      to { width: 100% }
     }
 
     @keyframes blink-caret {
@@ -135,9 +135,9 @@
   <h1>Senin için, Esma ❤️</h1>
 
   <div class="intro-gallery">
-    <img src="https://i.pinimg.com/originals/4f/b7/4d/4fb74d32ac6db189bfa23e8cbdb89e52.jpg" alt="Romantik çift 1">
-    <img src="https://i.pinimg.com/originals/91/0c/8b/910c8b0cc1e4078f9e01e67b4a5c5a3f.jpg" alt="Eski tarz aşk">
-    <img src="https://i.pinimg.com/originals/d5/f5/17/d5f5171186b0502269a6408620b4c8d6.jpg" alt="Sevgi dolu an">
+    <img src="https://i.imgur.com/Zl0h5hD.jpg" alt="Romantik çift 1">
+    <img src="https://i.imgur.com/R50O5eZ.jpg" alt="Eski tarz aşk">
+    <img src="https://i.imgur.com/sm79gTr.jpg" alt="Sevgi dolu an">
   </div>
 
   <div class="typewriter">Seni düşündüğümde, kalbim kelebeklerle doluyor. 💌</div>
@@ -155,18 +155,18 @@
     <div class="typewriter" style="animation-delay: 1s;">Harika! Artık seninle bir kalbimiz var. 💘</div>
 
     <div class="gallery">
-      <img src="https://placekitten.com/300/200" alt="Tatlı kedi">
-      <img src="https://i.pinimg.com/originals/00/f0/7e/00f07e23cf56e49f6f7f4f604206cf2f.gif" alt="Romantik çift">
-      <img src="https://i.pinimg.com/originals/59/1f/b6/591fb6814c7402c4bdb5e27d1e837ac5.gif" alt="Eski tarz çift">
-      <img src="https://placekitten.com/301/200" alt="Kedi kalp">
-      <img src="https://i.pinimg.com/originals/d7/2e/cb/d72ecb18196b1d271c0b2c3ecb9a85c1.gif" alt="Dans eden çift">
+      <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Tatlı kedi">
+      <img src="https://media.giphy.com/media/3ohs7KViFODK1r9n7y/giphy.gif" alt="Romantik çift">
+      <img src="https://media.giphy.com/media/3og0INyCmHlNylks9O/giphy.gif" alt="Eski tarz çift">
+      <img src="https://media.giphy.com/media/l1J9EdzfOSgfyueLm/giphy.gif" alt="Kedi kalp">
+      <img src="https://media.giphy.com/media/11sBLVxNs7v6WA/giphy.gif" alt="Dans eden çift">
     </div>
 
     <div id="gift-box" onclick="openGift()">🎁</div>
     <div id="gift-message">Bu kalp sana ait ❤️ Her zaman seninim, Esma 🌹</div>
 
     <div style="margin: 40px auto;">
-      <img src="https://i.pinimg.com/originals/ed/b2/e2/edb2e2efc6e7c21461c263c28ab614d1.gif" alt="Birlikte geleceğimiz" style="width: 300px; border-radius: 15px;">
+      <img src="https://media.giphy.com/media/QHE5gWI0QjqF2/giphy.gif" alt="Birlikte geleceğimiz" style="width: 300px; border-radius: 15px;">
       <p>Birlikte bir ev, bir kedi ve sonsuz sevgi... 💑🐱</p>
     </div>
   </div>
@@ -180,7 +180,7 @@
       const heart = document.createElement('div');
       heart.innerHTML = ['❤️','💖','💕'][Math.floor(Math.random()*3)];
       heart.className = 'heart';
-      heart.style.left = (window.innerWidth / 2 - 150 + Math.random() * 300) + 'px';
+      heart.style.left = (window.innerWidth / 2 - 100 + Math.random() * 200) + 'px';
       heart.style.top = Math.random() * window.innerHeight + 'px';
       heart.style.animationDuration = (3 + Math.random() * 4) + 's';
       heart.style.fontSize = (16 + Math.random() * 24) + 'px';
