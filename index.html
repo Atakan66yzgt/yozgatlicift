@@ -46,7 +46,6 @@
       max-width: 600px;
       box-shadow: 0 10px 20px rgba(255,105,180,0.2);
       position: relative;
-      overflow: hidden;
       opacity: 0;
       transform: translateY(20px);
       transition: all 1s;
@@ -212,22 +211,4 @@
       for (let i = 0; i < 8; i++) {
         const heart = document.createElement('div');
         heart.className = 'decoration-heart';
-        heart.innerHTML = ['❤️', '💖', '💕'][Math.floor(Math.random() * 3)];
-        heart.style.left = Math.random() * 80 + 10 + '%';
-        heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-        document.body.appendChild(heart);
-      }
-    }
-
-    // Anzeigen von Liebestexten
-    function showLoveLetter() {
-      document.getElementById('letter1').classList.remove('hidden');
-      setTimeout(function() {
-        document.getElementById('letter2').classList.remove('hidden');
-      }, 2000);
-    }
-
-    // Antwort anzeigen
-    function showResponse(answer) {
-      document.getElementById('love-question').classList.add('hidden');
-      if (answer === 'yes')
+        heart.innerHTML =
