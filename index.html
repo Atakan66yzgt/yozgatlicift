@@ -13,7 +13,7 @@
       color: #d23669;
       text-align: center;
       position: relative;
-      overflow-y: auto; /* Ermöglicht das vertikale Scrollen */
+      overflow-y: auto;
     }
 
     h1 {
@@ -32,18 +32,13 @@
       z-index: -1;
     }
 
-    /* Herz-Animation für alle Richtungen (links, rechts, unten) */
     @keyframes float {
       0% {
-        transform: translateY(100vh) translateX(100vw);
+        transform: translateY(100vh) translateX(0);
         opacity: 1;
       }
-      50% {
-        transform: translateY(-100vh) translateX(-100vw);
-        opacity: 0.5;
-      }
       100% {
-        transform: translateY(100vh) translateX(100vw);
+        transform: translateY(-100vh) translateX(0);
         opacity: 0;
       }
     }
@@ -74,6 +69,7 @@
       justify-content: center;
       gap: 20px;
       margin: 40px 0;
+      position: relative;
     }
 
     .gallery img {
@@ -86,6 +82,18 @@
 
     .gallery img:hover {
       transform: scale(1.1);
+    }
+
+    .gallery img:hover::after {
+      content: "Sonsuz Aşk! ❤️";
+      font-size: 1.2em;
+      color: #ff477e;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px 10px;
+      border-radius: 10px;
     }
 
     .question {
@@ -268,6 +276,18 @@
     <p>Birlikte tüm dünyayı gezip, en güzel anıları biriktireceğiz. 🌍</p>
   </div>
 
+  <div class="question">
+    <button class="btn" onclick="openWishList()">Hayallerimizi Yaz!</button>
+  </div>
+
+  <div id="wish-list" style="display: none;">
+    <ul>
+      <li>Birlikte dünyayı gezmek 🌍</li>
+      <li>Evde kahve keyfi yapmak ☕</li>
+      <li>Sonsuz mutlu anılar biriktirmek 📸</li>
+    </ul>
+  </div>
+
   <script>
     function showLove() {
       document.getElementById('love-part').style.display = 'block';
@@ -292,27 +312,3 @@
     function showText3() {
       document.getElementById('love-text3').style.display = 'block';
       document.getElementById('love-text1').style.display = 'none';
-      document.getElementById('love-text2').style.display = 'none';
-    }
-
-    // Adding floating hearts dynamically
-    function createHeart() {
-      var heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.innerHTML = '❤️';
-      heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
-      heart.style.left = (Math.random() * 100) + 'vw';
-      heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
-      document.body.appendChild(heart);
-
-      // Remove heart after animation ends
-      setTimeout(() => {
-        heart.remove();
-      }, 10000);
-    }
-
-    setInterval(createHeart, 500);
-  </script>
-
-</body>
-</html>
