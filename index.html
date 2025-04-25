@@ -43,6 +43,22 @@
       }
     }
 
+    /* Heart from the top */
+    .heart-top {
+      animation: float-top 10s linear infinite;
+    }
+
+    @keyframes float-top {
+      0% {
+        transform: translateY(-100vh) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+    }
+
     .typewriter {
       font-size: 1.3em;
       margin: 20px auto;
@@ -105,12 +121,22 @@
       background: linear-gradient(45deg, #ff6b81, #ff4757);
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 25px;
       margin: 10px;
       border-radius: 50px;
-      font-size: 1em;
+      font-size: 1.1em;
       cursor: pointer;
       box-shadow: 0 5px 15px rgba(255,107,129,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(255,107,129,0.6);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
     }
 
     #gift-box {
@@ -162,8 +188,8 @@
       }
 
       .btn {
-        padding: 8px 16px;
-        font-size: 0.9em;
+        padding: 10px 20px;
+        font-size: 1em;
       }
 
       .question {
@@ -194,8 +220,8 @@
       }
 
       .btn {
-        padding: 6px 12px;
-        font-size: 0.8em;
+        padding: 8px 16px;
+        font-size: 0.9em;
       }
 
       .question {
@@ -221,6 +247,10 @@
   </audio>
 
   <h1>Senin için, Esma ❤️</h1>
+
+  <!-- Hearts Floating -->
+  <div class="heart heart-top">❤️</div>
+  <div class="heart">❤️</div>
 
   <div class="intro-gallery">
     <img src="https://github.com/user-attachments/assets/8397ad00-2c34-4ff0-9d80-4583a106a856" alt="Tatlı kedi">
@@ -312,3 +342,13 @@
     function showText3() {
       document.getElementById('love-text3').style.display = 'block';
       document.getElementById('love-text1').style.display = 'none';
+      document.getElementById('love-text2').style.display = 'none';
+    }
+
+    function openWishList() {
+      document.getElementById('wish-list').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
