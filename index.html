@@ -172,6 +172,16 @@
       color: #ff6b81;
       margin-top: 30px;
     }
+
+    #love-texts {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .love-text-btn {
+      margin: 10px;
+      font-size: 1.2em;
+    }
   </style>
 </head>
 <body>
@@ -193,7 +203,7 @@
     <img src="https://github.com/user-attachments/assets/8397ad00-2c34-4ff0-9d80-4583a106a856" alt="Katzenschnappschuss">
   </div>
 
-  <div class="typewriter">Wenn ich an dich denke, muss ich lächeln und stelle mir vor wie Schön du doch bist. 💌</div>
+  <div class="typewriter">Wenn ich an dich denke, muss ich lächeln und stelle mir vor wie schön du doch bist. 💌</div>
 
   <div class="question">
     Möchtest du mit mir zusammen sein? 🥺
@@ -220,6 +230,13 @@
       <img src="https://github.com/user-attachments/assets/410c7625-9189-4df8-9e88-13e7b07aa855" alt="Unsere gemeinsame Zukunft" style="width: 300px; border-radius: 15px;">
       <p>Bir Ev, eine schöne Katze und unsere endlose Liebe... 💑🐱</p>
     </div>
+
+    <!-- Turkish Love Texts Buttons -->
+    <div id="love-texts">
+      <button class="btn love-text-btn" onclick="showLoveText('text1')">Sana aşık oldum. 💖</button>
+      <button class="btn love-text-btn" onclick="showLoveText('text2')">Seninle her şey daha güzel. 💕</button>
+      <button class="btn love-text-btn" onclick="showLoveText('text3')">Hayatımın anlamı sensin. 💌</button>
+    </div>
   </div>
 
   <div id="countdown">
@@ -243,10 +260,23 @@
 
     function showLove() {
       document.getElementById('love-part').style.display = 'block';
+      document.getElementById('love-texts').style.display = 'block'; // Zeigt die Liebstext-Buttons an
     }
 
     function openGift() {
       document.getElementById('gift-message').style.display = 'block';
+    }
+
+    function showLoveText(text) {
+      let message = '';
+      if (text === 'text1') {
+        message = 'Sana aşık oldum, Esma! 💖';
+      } else if (text === 'text2') {
+        message = 'Seninle her şey daha güzel, canım. 💕';
+      } else if (text === 'text3') {
+        message = 'Hayatımın anlamı sensin, seni çok seviyorum! 💌';
+      }
+      alert(message); // Zeigt den entsprechenden Text an
     }
 
     function createHearts() {
