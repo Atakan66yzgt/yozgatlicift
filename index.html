@@ -112,14 +112,6 @@
       color: white;
       font-size: 1.3em;
     }
-    .question-box {
-      background-color: #fff;
-      border-radius: 15px;
-      padding: 20px;
-      margin: 30px auto;
-      max-width: 500px;
-      box-shadow: 0 5px 15px rgba(255,105,180,0.2);
-    }
     .heart-background {
       position: absolute;
       top: 0;
@@ -128,6 +120,16 @@
       height: 100%;
       pointer-events: none;
       z-index: -1;
+    }
+    .heart-background img {
+      position: absolute;
+      animation: floating-hearts 5s infinite;
+      z-index: -1;
+    }
+    @keyframes floating-hearts {
+      0% { transform: translateY(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-100px); opacity: 0; }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -149,6 +151,7 @@
     <div class="hidden" id="yes-response">
       <div class="love-letter visible">
         <p>YAY! 🎉 Dann sind wir jetzt zusammen, du gehörst mir und ich dir! 💘</p>
+        <div class="action-btn" onclick="showLoveLetter()">Lass uns weiter träumen...</div>
       </div>
       <img src="https://i.imgur.com/5b6WZgY.jpg" alt="Glückliche Katze" class="cat-meme">
     </div>
@@ -160,13 +163,24 @@
       <img src="https://i.imgur.com/4GpDOGF.jpg" alt="Traurige Katze" class="cat-meme">
     </div>
 
-    <!-- Türkische Liebestexte (werden nach und nach aufgedeckt) -->
+    <!-- Türkische Liebestexte -->
     <div class="love-letter hidden" id="letter1">
       <p>Gözlerine her baktığımda, içimdeki bütün kelebekler kanat çırpıyor. Sen benim için sadece bir aşk değil, bir yaşam sebebisin. ❤️</p>
     </div>
 
     <div class="love-letter hidden" id="letter2">
       <p>Seninle geçirdiğim her an, zamanın durduğu bir rüya gibi. Kalbim seninle atıyor ve seninle daha güzel atıyor. 💖</p>
+    </div>
+
+    <!-- Weitere romantische Gifs -->
+    <div class="hidden" id="romantic-gif">
+      <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Romantisches Gif" class="cat-meme">
+    </div>
+
+    <!-- Türkische romantische Symbolik -->
+    <div class="love-letter hidden" id="turkish-culture">
+      <p>Seninle her an daha güzel, her saniye daha değerli. Beni tanıdığın için şanslıyım. 💖</p>
+      <p>Bu anı ölümsüzleştirmek istiyorum. 🌹</p>
     </div>
   </div>
 
@@ -194,43 +208,26 @@
     }
 
     // Fliegende Herzen erstellen
-    function createHearts(container) {
+    function createHearts() {
       for (let i = 0; i < 8; i++) {
         const heart = document.createElement('div');
         heart.className = 'decoration-heart';
         heart.innerHTML = ['❤️', '💖', '💕'][Math.floor(Math.random() * 3)];
         heart.style.left = Math.random() * 80 + 10 + '%';
         heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-        container.appendChild(heart);
+        document.body.appendChild(heart);
       }
     }
 
-    let currentStep = 0;
-    const steps = [
-      () => document.getElementById('love-question').classList.remove('hidden'),
-      () => document.getElementById('letter1').classList.remove('hidden'),
-      () => document.getElementById('letter2').classList.remove('hidden')
-    ];
-
-    function revealContent() {
-      if (currentStep < steps.length) {
-        steps[currentStep]();
-        if (currentStep > 0) { // Für die Liebesbriefe Herzen erstellen
-          createHearts(steps[currentStep]());
-        }
-        currentStep++;
-      }
+    // Anzeigen von Liebestexten
+    function showLoveLetter() {
+      document.getElementById('letter1').classList.remove('hidden');
+      setTimeout(function() {
+        document.getElementById('letter2').classList.remove('hidden');
+      }, 2000);
     }
 
+    // Antwort anzeigen
     function showResponse(answer) {
       document.getElementById('love-question').classList.add('hidden');
-      if (answer === 'yes') {
-        document.getElementById('yes-response').classList.remove('hidden');
-      } else {
-        document.getElementById('no-response').classList.remove('hidden');
-      }
-      createHearts(document.getElementById(answer + '-response'));
-    }
-  </script>
-</body>
-</html>
+      if (answer === 'yes')
