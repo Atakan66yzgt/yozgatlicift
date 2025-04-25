@@ -1,236 +1,102 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <title>Für dich, Esma 💖</title>
-  <style>
-    body {
-      background-color: #fff0f6;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      padding: 20px;
-      color: #d23669;
-      margin: 0;
-      overflow: hidden;
-      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
     }
-    h1 {
-      color: #ff4757;
-      font-size: 3em;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+
+    .gallery img:hover {
+      transform: scale(1.1);
     }
-    .heart-btn {
-      font-size: 4em;
-      color: #ff6b81;
-      cursor: pointer;
-      margin: 20px 0;
-      transition: all 0.3s;
-      display: inline-block;
-      animation: heartbeat 1.5s infinite;
+
+    .question {
+      font-size: 1.5em;
+      margin: 30px auto;
     }
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-    .hidden {
-      display: none;
-    }
-    .action-btn {
+
+    .btn {
       background: linear-gradient(45deg, #ff6b81, #ff4757);
       color: white;
       border: none;
-      padding: 12px 30px;
+      padding: 10px 20px;
+      margin: 10px;
       border-radius: 50px;
-      font-size: 1.2em;
+      font-size: 1em;
       cursor: pointer;
-      margin: 15px 10px;
       box-shadow: 0 5px 15px rgba(255,107,129,0.4);
-      transition: all 0.3s;
     }
-    .action-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(255,107,129,0.6);
-    }
-    #music-control {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(45deg, #ff6b81, #ff4757);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    #gift-box {
+      margin: 30px auto;
+      font-size: 3em;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 100;
     }
-    #music-control i {
-      color: white;
+
+    #gift-message {
+      display: none;
       font-size: 1.3em;
-    }
-    .decoration-heart {
-      position: absolute;
-      font-size: 1.5em;
-      opacity: 0;
-      animation: floatUp 4s linear infinite;
-      z-index: 10;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100px) rotate(20deg); opacity: 0; }
-    }
-    .love-letter {
-      background-color: #fff;
-      border-radius: 20px;
-      padding: 25px;
-      margin: 30px auto;
-      max-width: 600px;
-      box-shadow: 0 10px 20px rgba(255,105,180,0.2);
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1s;
-    }
-    .love-letter.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .cat-meme {
-      max-width: 300px;
-      border-radius: 15px;
-      margin: 30px auto;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .hint {
-      color: #ff4757;
-      font-size: 1.3em;
-      margin-top: 20px;
-      font-weight: bold;
+      color: #c92a5a;
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <div class="main-container">
-    <div class="heart-btn" id="heart-btn">❤️</div>
-    <h1>Für dich, meine Liebe Esma 💖</h1>
-    <p>Klick auf das Herz, um eine Überraschung zu entdecken! 😘</p>
 
-    <!-- Musik-Steuerung -->
-    <div id="music-control" onclick="toggleMusic()">
-      <i class="fas fa-music"></i>
-    </div>
-    
-    <audio id="bg-music" loop>
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-      Dein Browser unterstützt keine Hintergrundmusik.
-    </audio>
+  <h1>Senin için, Esma ❤️</h1>
 
-    <!-- Romantische Briefe und Bilder -->
-    <div class="love-letter hidden" id="letter1">
-      <p>Gözlerine her baktığımda, içimdeki bütün kelebekler kanat çırpıyor. Sen benim için sadece bir aşk değil, bir yaşam sebebisin. ❤️</p>
-    </div>
-    
-    <div class="love-letter hidden" id="letter2">
-      <p>Seninle geçirdiğim her an, zamanın durduğu bir rüya gibi. Kalbim seninle atıyor ve seninle daha güzel atıyor. 💖</p>
-    </div>
+  <div class="typewriter">Seni düşündüğümde, kalbim kelebeklerle doluyor. 💌</div>
 
-    <div class="love-letter hidden" id="letter3">
-      <p>Seninle her şey mümkün, çünkü seninle her an bir ömre bedel. 💕</p>
+  <div class="question">
+    Benimle birlikte olmak ister misin? 🥺
+    <div>
+      <button class="btn" onclick="showLove()">Evet! ❤️</button>
+      <button class="btn" onclick="alert('Ben seni yine de sevmeye devam edeceğim... 😢')">Hayır 😢</button>
     </div>
-
-    <div class="hidden" id="yes-response">
-      <div class="love-letter visible">
-        <p>YAY! 🎉 Dann sind wir jetzt zusammen, du gehörst mir und ich dir! 💘</p>
-      </div>
-      <img src="https://i.imgur.com/5b6WZgY.jpg" alt="Glückliche Katze" class="cat-meme">
-    </div>
-
-    <div class="hidden" id="no-response">
-      <div class="love-letter visible">
-        <p>Toll, hab alles umsonst gemacht... 😭</p>
-      </div>
-      <img src="https://i.imgur.com/4GpDOGF.jpg" alt="Traurige Katze" class="cat-meme">
-    </div>
-    
-    <!-- Ja/Nein Frage -->
-    <div class="question-box hidden" id="love-question">
-      <p>Willst du mit mir zusammen sein? 💌</p>
-      <button class="action-btn" onclick="showResponse('yes')">Ja! ❤️</button>
-      <button class="action-btn" onclick="showResponse('no')">Nein 😢</button>
-    </div>
-
-    <!-- Hinweise für die Interaktionen -->
-    <p class="hint">💖 Klick auf das Herz, um eine Überraschung zu starten!</p>
-    <p class="hint">🎶 Klick auf das Musik-Symbol, um Musik zu steuern!</p>
   </div>
 
+  <div id="love-part" style="display:none">
+    <div class="typewriter" style="animation-delay: 1s;">Harika! Artık seninle bir kalbimiz var. 💘</div>
+
+    <div class="gallery">
+      <img src="https://i.imgur.com/v0JXau2.jpg" alt="Tatlı kedi">
+      <img src="https://i.imgur.com/OYbZ7Xs.gif" alt="Romantik çift">
+      <img src="https://i.imgur.com/s9T9Ww4.gif" alt="Eski tarz çift">
+      <img src="https://i.imgur.com/BkN1ZUV.jpg" alt="Kedi kalp">
+      <img src="https://i.imgur.com/6qDXcN0.gif" alt="Dans eden çift">
+    </div>
+
+    <div id="gift-box" onclick="openGift()">🎁</div>
+    <div id="gift-message">Bu kalp sana ait ❤️ Her zaman seninim, Esma 🌹</div>
+
+    <div style="margin: 40px auto;">
+      <img src="https://i.imgur.com/FL9AFR5.png" alt="Birlikte geleceğimiz" style="width: 300px; border-radius: 15px;">
+      <p>Birlikte bir ev, bir kedi ve sonsuz sevgi... 💑🐱</p>
+    </div>
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/ol1tf5.mp3" type="audio/mp3">
+  </audio>
+
   <script>
-    let music = document.getElementById('bg-music');
-    let heartBtn = document.getElementById('heart-btn');
-    let currentStep = 0;
-    const steps = [
-      () => document.getElementById('love-question').classList.remove('hidden'),
-      () => document.getElementById('letter1').classList.remove('hidden'),
-      () => document.getElementById('letter2').classList.remove('hidden'),
-      () => document.getElementById('letter3').classList.remove('hidden')
-    ];
-
-    // Musik nur abspielen, wenn auf das Herz geklickt wird
-    heartBtn.addEventListener('click', function() {
-      music.play(); // Musik starten
-      heartBtn.innerHTML = '💖'; 
-      heartBtn.style.animation = 'none'; 
-
-      // Herz-Icons und romantische Briefe anzeigen
-      if (currentStep < steps.length) {
-        steps[currentStep]();
-        if (currentStep > 0) { 
-          createHearts(); // Fliegende Herzen erstellen
-        }
-        currentStep++;
-      }
-    });
-
-    // Musik-Steuerung
-    function toggleMusic() {
-      if (music.paused) {
-        music.play();
-        document.querySelector('#music-control i').className = 'fas fa-pause';
-      } else {
-        music.pause();
-        document.querySelector('#music-control i').className = 'fas fa-music';
-      }
-    }
-
-    // Funktion zum Erstellen der fliegenden Herzen
+    // Fliegende Herzen dauerhaft
     function createHearts() {
-      for (let i = 0; i < 8; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'decoration-heart';
-        heart.innerHTML = ['❤️', '💖', '💕'][Math.floor(Math.random() * 3)]; // Zufällige Herzarten
-        heart.style.left = Math.random() * 80 + 10 + '%'; // Zufällige Position von links
-        heart.style.animationDuration = Math.random() * 3 + 2 + 's'; // Zufällige Dauer der Animation
-        document.body.appendChild(heart); // Herz hinzufügen
-      }
+      const heart = document.createElement('div');
+      heart.innerHTML = ['❤️','💖','💕'][Math.floor(Math.random()*3)];
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = Math.random() * window.innerHeight + 'px';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => document.body.removeChild(heart), 10000);
+    }
+    setInterval(createHearts, 300);
+
+    function showLove() {
+      document.getElementById('love-part').style.display = 'block';
     }
 
-    // Ja/Nein Antwort
-    function showResponse(answer) {
-      document.getElementById('love-question').classList.add('hidden');
-      if (answer === 'yes') {
-        document.getElementById('yes-response').classList.remove('hidden');
-      } else {
-        document.getElementById('no-response').classList.remove('hidden');
-      }
+    function openGift() {
+      document.getElementById('gift-message').style.display = 'block';
     }
   </script>
+
 </body>
 </html>
