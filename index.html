@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Senin için, Esma ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
@@ -12,12 +13,11 @@
       font-family: 'Arial', sans-serif;
       color: #d23669;
       text-align: center;
-      position: relative;
     }
 
     h1 {
       margin-top: 50px;
-      font-size: 3em;
+      font-size: 2.5em;
       color: #ff477e;
       text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
     }
@@ -125,16 +125,76 @@
     }
 
     .intro-gallery img {
-      width: 240px;
+      width: 100%;
+      max-width: 240px;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
 
-    /* Fixed position for hearts */
-    .heart {
-      z-index: -1; /* Ensures hearts stay in the background */
+    /* Responsiveness for smaller screens */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .typewriter {
+        font-size: 1.1em;
+        max-width: 90%;
+      }
+
+      .gallery img {
+        width: 180px;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+
+      .question {
+        font-size: 1.3em;
+      }
+
+      .intro-gallery img {
+        max-width: 200px;
+      }
+
+      #gift-box {
+        font-size: 2.5em;
+      }
     }
 
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .typewriter {
+        font-size: 1em;
+        max-width: 80%;
+      }
+
+      .gallery img {
+        width: 150px;
+      }
+
+      .btn {
+        padding: 6px 12px;
+        font-size: 0.8em;
+      }
+
+      .question {
+        font-size: 1.1em;
+      }
+
+      .intro-gallery img {
+        max-width: 180px;
+      }
+
+      #gift-box {
+        font-size: 2em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -162,11 +222,9 @@
     <div class="typewriter" style="animation-delay: 1s;">Harika! Artık seninle bir kalbimiz var. 💘</div>
 
     <div class="gallery">
-      <img src="gif/kitten1.gif" alt="Tatlı kedi">
-      <img src="gif/romantic1.gif" alt="Romantik çift">
-      <img src="gif/oldcouple.gif" alt="Eski tarz çift">
-      <img src="gif/kitten2.gif" alt="Kedi kalp">
-      <img src="gif/dancingcouple.gif" alt="Dans eden çift">
+      <img src="https://placekitten.com/300/200" alt="Tatlı kedi">
+      <img src="https://placekitten.com/301/200" alt="Kedi kalp">
+      <img src="https://placekitten.com/400/300" alt="Kedili fotoğraf">
     </div>
 
     <div id="gift-box" onclick="openGift()">🎁</div>
@@ -179,14 +237,13 @@
   </div>
 
   <audio autoplay loop>
-    <source src="audio/Sezen_Aksu_Gulumse.mp3" type="audio/mpeg">
+    <source src="sezen_aksu.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Herz-Funktion
     function createHearts() {
       const heart = document.createElement('div');
-      heart.innerHTML = ['❤️', '💖', '💕'][Math.floor(Math.random() * 3)];
+      heart.innerHTML = ['❤️','💖','💕'][Math.floor(Math.random()*3)];
       heart.className = 'heart';
       heart.style.left = (window.innerWidth / 2 - 150 + Math.random() * 300) + 'px';
       heart.style.top = Math.random() * window.innerHeight + 'px';
@@ -197,16 +254,8 @@
     }
     setInterval(createHearts, 100);
 
-    // Zeigt die Liebe an
     function showLove() {
       document.getElementById('love-part').style.display = 'block';
     }
 
-    // Geschenk öffnen
-    function openGift() {
-      document.getElementById('gift-message').style.display = 'block';
-    }
-  </script>
-
-</body>
-</html>
+    function openGift
