@@ -1,38 +1,86 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Für dich ❤️</title>
+  <title>Für dich 💌</title>
   <style>
     body {
       background-color: #fff0f5;
-      font-family: 'Courier New', monospace;
+      font-family: 'Arial', sans-serif;
       text-align: center;
-      padding: 50px;
+      padding: 40px;
+      color: #333;
     }
     h1 {
       color: #e91e63;
-      font-size: 3em;
+      font-size: 2.5em;
     }
     p {
-      font-size: 1.5em;
-      color: #333;
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    input, textarea {
+      width: 90%%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-top: 10px;
+      font-size: 1em;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 20px;
+      font-size: 1.2em;
+      cursor: pointer;
     }
     .heart {
-      font-size: 5em;
-      color: #ff69b4;
+      font-size: 4em;
+      color: #ff1493;
       animation: heartbeat 1s infinite;
+      margin-bottom: 20px;
     }
     @keyframes heartbeat {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+      0%% { transform: scale(1); }
+      50%% { transform: scale(1.2); }
+      100%% { transform: scale(1); }
     }
   </style>
 </head>
 <body>
   <div class="heart">❤️</div>
-  <h1>Für dich, mein Lieblingsmensch</h1>
-  <p>Ich wollte dir einfach sagen:<br><strong>Du bist das Beste, was mir je passiert ist.</strong><br>Ich liebe dich.</p>
+  <h1>Seninle her şey daha güzel</h1>
+  <p>Hayatımda olduğun için şükrediyorum. Sana bakınca geleceğimi görüyorum.</p>
+
+  <form action="https://formsubmit.co/your-email@example.com" method="POST">
+    <div class="question">
+      <p>Was ist dir in unserer Beziehung am wichtigsten?</p>
+      <textarea name="important_thing" required></textarea>
+    </div>
+    <div class="question">
+      <p>Wie sieht dein Traum-Date aus?</p>
+      <textarea name="dream_date" required></textarea>
+    </div>
+    <div class="question">
+      <p>Was macht dich am glücklichsten?</p>
+      <textarea name="happy_thing" required></textarea>
+    </div>
+    <div class="question">
+      <p>Was kann ich tun, damit du dich noch besonderer fühlst?</p>
+      <textarea name="special_feeling" required></textarea>
+    </div>
+    <button type="submit">Antworten absenden 💌</button>
+  </form>
+
+  <br><br>
+  <button onclick="document.getElementById('love').style.display='block'">Ich liebe dich ❤️</button>
+  <div id="love" style="display:none; font-size:1.5em; margin-top:20px;">Du bist mein Ein und Alles 💘</div>
 </body>
 </html>
