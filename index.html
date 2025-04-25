@@ -167,6 +167,12 @@
       cursor: pointer;
     }
 
+    #countdown {
+      font-size: 1.5em;
+      color: #ff6b81;
+      margin-top: 30px;
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 2em;
@@ -276,6 +282,10 @@
     </div>
   </div>
 
+  <div id="countdown">
+    <p>Unser besonderer Tag kommt in: <span id="timer"></span></p>
+  </div>
+
   <div class="message-form">
     <form action="https://formspree.io/f/xyzwzzye" method="POST">
       <textarea name="message" placeholder="Hinterlasse mir eine Nachricht..." rows="4" required></textarea>
@@ -308,12 +318,28 @@
         const distance = Math.random() * 100 + 100;
 
         heart.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
-        heart.style.transform = `translateY(${direction * distance}vh)`;
+
+        heart.style.animationName = 'float';
+        heart.style.animationTimingFunction = 'linear';
       }
     }
 
     createHearts();
-  </script>
 
+    function updateCountdown() {
+      const futureDate = new Date('2025-12-31T00:00:00');
+      const currentDate = new Date();
+      const timeDifference = futureDate - currentDate;
+
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      document.getElementById('timer').innerHTML = `${days} Tage, ${hours} Stunden, ${minutes} Minuten, ${seconds} Sekunden`;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
