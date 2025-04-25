@@ -1,3 +1,6 @@
+Hier ist der vollständige HTML-Code, der alle deine Anforderungen erfüllt. Der Code enthält einen Schaltplatten-Button, um die Musik abzuspielen und zu stoppen, sowie alle Texte und Formulare zentriert auf der Seite. Die Musik wird über das `<audio>`-Tag abgespielt, und du kannst die URL der Musikdatei anpassen.
+
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -12,8 +15,10 @@
       color: #333;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center; /* Zentriert vertikal */
       flex-direction: column;
+      height: 100vh; /* Volle Höhe des Viewports */
+      margin: 0; /* Entfernt Standard-Margin */
     }
     h1 {
       color: #e91e63; /* Pinke Schriftfarbe */
@@ -49,12 +54,19 @@
       height: auto;
       margin-bottom: 20px;
     }
-    .cat-meme {
-      width: 200px; /* Breite der Katzenbilder */
-      height: auto;
-      margin: 20px;
-      border-radius: 10px; /* Abgerundete Ecken */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten für Tiefe */
+    .record-button {
+      width: 100px;
+      height: 100px;
+      background: url('https://example.com/path/to/your-record-image.png') no-repeat center center; /* Ersetze durch die URL deines Schaltplatten-Bildes */
+      background-size: cover;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      margin: 20px auto;
+    }
+    .record-button:focus {
+      outline: none;
     }
     .sidebar {
       display: flex;
@@ -68,6 +80,19 @@
       margin: 10px;
     }
   </style>
+  <script>
+    let isPlaying = false;
+    const music = document.getElementById('music');
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+      } else {
+        music.play();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
 </head>
 <body>
   <img class="heart" src="https://media.giphy.com/media/3o7aD2sa1g0g0g0g0g/giphy.gif" alt="Animiertes Herz"> <!-- Animiertes Herz-GIF -->
@@ -75,10 +100,13 @@
   <p>Hayatımda olduğun için şükrediyorum. Sana bakınca geleceğimi görüyorum.</p>
 
   <!-- Audio-Element für die Musik -->
-  <audio controls autoplay loop>
-    <source src="https://www.example.com/path/to/your-music.mp3" type="audio/mpeg">
+  <audio id="music" loop>
+    <source src="https://www.example.com/path/to/your-music.mp3" type="audio/mpeg"> <!-- Ersetze durch die URL deiner MP3-Datei -->
     Ihr Browser unterstützt keine Audio-Elemente.
   </audio>
+
+  <!-- Schaltplatten-Button -->
+  <button class="record-button" id="playPauseButton" onclick="toggleMusic()"></button>
 
   <form action="https://formsubmit.co/oktaymete2004@gmail.com" method="POST">
     <div class="question">
@@ -91,18 +119,4 @@
     </div>
     <div class="question">
       <p>Was macht dich am glücklichsten?</p>
-      <textarea name="happy_thing" required></textarea>
-    </div>
-    <div class="question">
-      <p>Was kann ich tun, damit du dich noch besonderer fühlst?</p>
-      <textarea name="special_feeling" required></textarea>
-    </div>
-    <button type="submit">Antworten absenden 💌</button>
-  </form>
-
-  <br><br>
-  <button onclick="document.getElementById('love').style.display='block'">Ich liebe dich ❤️</button>
-  <div id="love" style="display:none; font-size:1.5em; margin-top:20px;">Du bist mein Ein und Alles 💘</div>
-
-  <div class="sidebar">
-    <img class="gif"
+      <textarea
