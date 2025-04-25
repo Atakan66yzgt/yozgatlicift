@@ -8,7 +8,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ffb6c1, #f9d1d3); /* Sanfter, leichter Farbverlauf */
+      background-color: #fff0f6;
       font-family: 'Arial', sans-serif;
       color: #d23669;
       text-align: center;
@@ -50,12 +50,12 @@
       overflow: hidden;
       white-space: nowrap;
       border-right: 3px solid pink;
-      animation: typing 10s steps(40, end), blink-caret 0.75s step-end infinite; /* Verlängerte Animation */
+      animation: typing 5s steps(40, end), blink-caret 0.75s step-end infinite;
     }
 
     @keyframes typing {
       from { max-width: 0 }
-      to { max-width: 600px; } /* Die Breite wurde auf 600px verlängert, damit der ganze Text sichtbar ist */
+      to { max-width: 600px }
     }
 
     @keyframes blink-caret {
@@ -173,14 +173,11 @@
       margin-top: 30px;
     }
 
-    #love-texts {
-      display: none;
-      margin-top: 30px;
-    }
-
-    .love-text-btn {
-      margin: 10px;
+    .poem {
       font-size: 1.2em;
+      margin: 20px auto;
+      max-width: 600px;
+      color: #ff6b81;
     }
   </style>
 </head>
@@ -188,7 +185,6 @@
 
   <h1>Für dich, Esma ❤️</h1>
 
-  <!-- Musik -->
   <audio id="love-audio" loop>
     <source src="https://raw.githubusercontent.com/Atakan66yzgt/yozgatlicift/main/B%C3%B6yle%20Sever.mp3" type="audio/mp3">
     Dein Browser unterstützt das Audioelement nicht.
@@ -231,12 +227,23 @@
       <p>Bir Ev, eine schöne Katze und unsere endlose Liebe... 💑🐱</p>
     </div>
 
-    <!-- Turkish Love Texts Buttons -->
-    <div id="love-texts">
-      <button class="btn love-text-btn" onclick="showLoveText('text1')">Sana aşık oldum. 💖</button>
-      <button class="btn love-text-btn" onclick="showLoveText('text2')">Seninle her şey daha güzel. 💕</button>
-      <button class="btn love-text-btn" onclick="showLoveText('text3')">Hayatımın anlamı sensin. 💌</button>
+    <!-- Neue Buttons für türkische Gedichte -->
+    <div class="poem">
+      <button class="btn" onclick="showPoem('poem1')">Sana aşık oldum. 💖</button>
+      <button class="btn" onclick="showPoem('poem2')">Seninle her şey daha güzel. 💕</button>
+      <button class="btn" onclick="showPoem('poem3')">Hayatımın anlamı sensin. 💌</button>
     </div>
+
+    <div id="poem1" class="poem" style="display:none;">
+      <p>Gözlerinde kaybolurum her zaman,<br>Bir bakışınla başlar her an.<br>Gözlerinin derinliğinde,<br>Bir ömür geçirebilirim ben.</p>
+    </div>
+    <div id="poem2" class="poem" style="display:none;">
+      <p>Birlikte yaşlanmak istiyorum,<br>Birlikte her anı paylaşmak.<br>Her düşe seninle dalmak,<br>Ve her sabah seninle uyanmak.</p>
+    </div>
+    <div id="poem3" class="poem" style="display:none;">
+      <p>Aşkın gücüyle sarhoş oluyorum,<br>Sadece seninle varım, seninle yaşıyorum.<br>Bütün yıldızlar seni gösteriyor,<br>Gecenin karanlığında seni seviyorum.</p>
+    </div>
+
   </div>
 
   <div id="countdown">
@@ -260,23 +267,16 @@
 
     function showLove() {
       document.getElementById('love-part').style.display = 'block';
-      document.getElementById('love-texts').style.display = 'block'; // Zeigt die Liebstext-Buttons an
     }
 
     function openGift() {
       document.getElementById('gift-message').style.display = 'block';
     }
 
-    function showLoveText(text) {
-      let message = '';
-      if (text === 'text1') {
-        message = 'Sana aşık oldum, Esma! 💖';
-      } else if (text === 'text2') {
-        message = 'Seninle her şey daha güzel, canım. 💕';
-      } else if (text === 'text3') {
-        message = 'Hayatımın anlamı sensin, seni çok seviyorum! 💌';
-      }
-      alert(message); // Zeigt den entsprechenden Text an
+    function showPoem(poemId) {
+      const poems = document.querySelectorAll('.poem');
+      poems.forEach(poem => poem.style.display = 'none');
+      document.getElementById(poemId).style.display = 'block';
     }
 
     function createHearts() {
