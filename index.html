@@ -13,7 +13,7 @@
       color: #d23669;
       text-align: center;
       position: relative;
-      overflow: hidden;
+      overflow-y: auto;
     }
 
     h1 {
@@ -39,21 +39,6 @@
       }
       100% {
         transform: translateY(-100vh) translateX(0);
-        opacity: 0;
-      }
-    }
-
-    .heart-top {
-      animation: float-top 10s linear infinite;
-    }
-
-    @keyframes float-top {
-      0% {
-        transform: translateY(-100vh) translateX(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) translateX(0);
         opacity: 0;
       }
     }
@@ -84,7 +69,6 @@
       justify-content: center;
       gap: 20px;
       margin: 40px 0;
-      position: relative;
     }
 
     .gallery img {
@@ -99,18 +83,6 @@
       transform: scale(1.1);
     }
 
-    .gallery img:hover::after {
-      content: "Sonsuz Aşk! ❤️";
-      font-size: 1.2em;
-      color: #ff477e;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 5px 10px;
-      border-radius: 10px;
-    }
-
     .question {
       font-size: 1.5em;
       margin: 30px auto;
@@ -120,22 +92,17 @@
       background: linear-gradient(45deg, #ff6b81, #ff4757);
       color: white;
       border: none;
-      padding: 12px 25px;
+      padding: 10px 20px;
       margin: 10px;
       border-radius: 50px;
-      font-size: 1.1em;
+      font-size: 1em;
       cursor: pointer;
       box-shadow: 0 5px 15px rgba(255,107,129,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.3s;
     }
 
     .btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(255,107,129,0.6);
-    }
-
-    .btn:active {
-      transform: scale(0.98);
     }
 
     #gift-box {
@@ -156,34 +123,48 @@
       margin-top: 10px;
     }
 
-    /* Bubble style for typing */
-    .bubble-container {
-      margin: 40px auto;
-      width: 90%;
-      max-width: 600px;
-      padding: 10px;
-      border-radius: 15px;
-      background-color: #f1f1f1;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .intro-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px auto;
     }
 
-    .bubble-input {
+    .intro-gallery img {
       width: 100%;
-      padding: 12px;
-      border-radius: 20px;
-      border: 1px solid #ff6b81;
-      font-size: 1.1em;
-      box-sizing: border-box;
+      max-width: 240px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
 
-    .bubble-submit {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #ff477e;
-      border: none;
-      border-radius: 20px;
+    /* Form für Nachricht */
+    .message-form {
+      margin: 30px auto;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .message-form textarea {
+      width: 80%;
+      height: 100px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 1em;
+      resize: none;
+      margin-bottom: 20px;
+    }
+
+    .message-form button {
+      background: linear-gradient(45deg, #ff6b81, #ff4757);
       color: white;
-      font-size: 1.1em;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2em;
       cursor: pointer;
     }
 
@@ -203,8 +184,20 @@
       }
 
       .btn {
-        padding: 10px 20px;
-        font-size: 1em;
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+
+      .question {
+        font-size: 1.3em;
+      }
+
+      .intro-gallery img {
+        max-width: 200px;
+      }
+
+      #gift-box {
+        font-size: 2.5em;
       }
     }
 
@@ -223,8 +216,20 @@
       }
 
       .btn {
-        padding: 8px 16px;
-        font-size: 0.9em;
+        padding: 6px 12px;
+        font-size: 0.8em;
+      }
+
+      .question {
+        font-size: 1.1em;
+      }
+
+      .intro-gallery img {
+        max-width: 180px;
+      }
+
+      #gift-box {
+        font-size: 2em;
       }
     }
   </style>
@@ -239,67 +244,91 @@
 
   <h1>Senin için, Esma ❤️</h1>
 
-  <!-- Hearts Floating -->
-  <div id="hearts"></div>
+  <div class="intro-gallery">
+    <img src="https://github.com/user-attachments/assets/8397ad00-2c34-4ff0-9d80-4583a106a856" alt="Tatlı kedi">
+    <img src="https://github.com/user-attachments/assets/202a4850-b606-4f36-9ebe-b896390a7662" alt="Kedi kalp">
+    <img src="https://github.com/user-attachments/assets/8397ad00-2c34-4ff0-9d80-4583a106a856" alt="Kedili fotoğraf">
+  </div>
 
   <div class="typewriter">Seni düşündüğümde, kalbim kelebeklerle doluyor. 💌</div>
 
-  <div class="bubble-container">
-    <textarea id="dreamInput" class="bubble-input" placeholder="Hayallerini buraya yaz..."></textarea>
-    <button class="bubble-submit" onclick="submitDream()">Hayalimi Gönder</button>
+  <div class="question">
+    Benimle birlikte olmak ister misin? 🥺
+    <div>
+      <button class="btn" onclick="showLove()">Evet! ❤️</button>
+      <button class="btn" onclick="alert('Ben seni yine de sevmeye devam edeceğim... 😢')">Hayır 😢</button>
+    </div>
+    <div class="hint">Cevabını seçmek için yukarıdaki düğmelere tıkla.</div>
   </div>
 
-  <div id="gift-box" onclick="openGift()">🎁</div>
-  <div id="gift-message">Bu kalp sana ait ❤️ Her zaman seninim, Esma 🌹</div>
+  <div id="love-part" style="display:none">
+    <div class="typewriter" style="animation-delay: 1s;">Harika! Artık seninle bir kalbimiz var. 💘</div>
 
-  <div class="question">
-    <button class="btn" onclick="showLove()">Evet! ❤️</button>
-    <button class="btn" onclick="alert('Ben seni yine de sevmeye devam edeceğim... 😢')">Hayır 😢</button>
+    <div class="gallery">
+      <img src="https://github.com/user-attachments/assets/83174e82-b112-46b6-b1f9-b91a216d88ec" alt="Tatlı kedi">
+      <img src="https://github.com/user-attachments/assets/96681c61-5076-4193-becc-a7b34ceef13b" alt="Kedi kalp">
+      <img src="https://github.com/user-attachments/assets/34de4630-4a72-408f-bcd6-669e72b5f39e" alt="Kedili fotoğraf">
+    </div>
+
+    <div id="gift-box" onclick="openGift()">🎁</div>
+    <div id="gift-message">Bu kalp sana ait ❤️ Her zaman seninim, Esma 🌹</div>
+
+    <div style="margin: 40px auto;">
+      <img src="https://github.com/user-attachments/assets/410c7625-9189-4df8-9e88-13e7b07aa855" alt="Birlikte geleceğimiz" style="width: 300px; border-radius: 15px;">
+      <p>Birlikte bir ev, bir kedi ve sonsuz sevgi... 💑🐱</p>
+    </div>
+  </div>
+
+  <!-- Nachrichtensystem -->
+  <div class="message-form">
+    <textarea id="user-message" placeholder="Bana bir mesaj bırak..." rows="4"></textarea>
+    <button class="btn" onclick="sendMessage()">Mesajı Gönder</button>
   </div>
 
   <script>
-    // Spawn hearts from top and bottom
-    function spawnHearts() {
-      for (let i = 0; i < 20; i++) {
-        let heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-
-        // Randomly position hearts
-        let positionX = Math.random() * window.innerWidth;
-        let direction = Math.random() < 0.5 ? "heart-top" : "";
-        heart.style.left = positionX + "px";
-        
-        // Add animation for floating hearts from both top and bottom
-        heart.classList.add(direction);
-
-        document.getElementById("hearts").appendChild(heart);
-      }
+    function showLove() {
+      document.getElementById('love-part').style.display = 'block';
     }
 
-    // Trigger spawning hearts on load
-    spawnHearts();
-
-    // Submit dream to owner (currently a simple alert)
-    function submitDream() {
-      let dreamMessage = document.getElementById('dreamInput').value;
-      if (dreamMessage) {
-        alert("Hayalinizi aldım: " + dreamMessage);
-        document.getElementById('dreamInput').value = '';  // Clear input field
-      } else {
-        alert("Lütfen bir şey yazın!");
-      }
-    }
-
-    // Open gift box
     function openGift() {
       document.getElementById('gift-message').style.display = 'block';
     }
 
-    // Show love section
-    function showLove() {
-      alert("Aşk mesajı gönderildi!");
+    function sendMessage() {
+      const message = document.getElementById('user-message').value;
+      if (message.trim() === '') {
+        alert('Lütfen bir mesaj yazın!');
+      } else {
+        alert('Mesajınız başarıyla gönderildi! ❤️');
+        // Hier könntest du den Code hinzufügen, um die Nachricht zu speichern oder zu versenden
+      }
     }
+
+    // Herz-Animation (von oben und unten)
+    function createHearts() {
+      const heartContainer = document.body;
+      for (let i = 0; i < 50; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.fontSize = `${Math.random() * 20 + 15}px`;
+        heartContainer.appendChild(heart);
+
+        // Random movement
+        const direction = Math.random() > 0.5 ? 1 : -1;
+        const duration = Math.random() * 5 + 5;
+        const delay = Math.random() * 2;
+        const distance = Math.random() * 100 + 100;
+
+        heart.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+
+        heart.style.transform = `translateY(${direction * distance}vh)`;
+      }
+    }
+
+    // Starten der Herz-Animation
+    createHearts();
   </script>
 
 </body>
