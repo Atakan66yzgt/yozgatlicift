@@ -32,6 +32,7 @@
       z-index: -1;
     }
 
+    /* Herz-Animation für alle Richtungen (links, rechts, unten) */
     @keyframes float {
       0% {
         transform: translateY(100vh) translateX(0);
@@ -40,22 +41,6 @@
       100% {
         transform: translateY(-100vh) translateX(0);
         opacity: 0;
-      }
-    }
-
-    /* Herz-Animation für alle Richtungen (links, rechts, unten) */
-    @keyframes floatLeftRight {
-      0% {
-        transform: translateY(100vh) translateX(-50vw);
-        opacity: 1;
-      }
-      50% {
-        transform: translateY(-100vh) translateX(50vw);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(100vh) translateX(0);
-        opacity: 1;
       }
     }
 
@@ -270,3 +255,25 @@
   </div>
 
   <div id="love-text3" style="display:none;">
+    <p>Birlikte tüm dünyayı gezip, en güzel anıları biriktireceğiz. 🌍</p>
+  </div>
+
+  <script>
+    function showLove() {
+      document.getElementById('love-part').style.display = 'block';
+    }
+
+    function openGift() {
+      document.getElementById('gift-message').style.display = 'block';
+    }
+
+    function showText1() {
+      document.getElementById('love-text1').style.display = 'block';
+      document.getElementById('love-text2').style.display = 'none';
+      document.getElementById('love-text3').style.display = 'none';
+    }
+
+    function showText2() {
+      document.getElementById('love-text2').style.display = 'block';
+      document.getElementById('love-text1').style.display = 'none';
+      document.getElementById('love-text3').style.display = 'none';
