@@ -20,10 +20,6 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
       margin-bottom: 10px;
     }
-    .main-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
     .heart-btn {
       font-size: 4em;
       color: #ff6b81;
@@ -38,34 +34,8 @@
       50% { transform: scale(1.2); }
       100% { transform: scale(1); }
     }
-    .love-letter {
-      background-color: #fff;
-      border-radius: 20px;
-      padding: 25px;
-      margin: 30px auto;
-      max-width: 600px;
-      box-shadow: 0 10px 20px rgba(255,105,180,0.2);
-      position: relative;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1s;
-    }
-    .love-letter.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .decoration-heart {
-      position: absolute;
-      font-size: 1.5em;
-      opacity: 0;
-      animation: floatUp 4s linear forwards;
-      z-index: 10;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100px) rotate(20deg); opacity: 0; }
+    .hidden {
+      display: none;
     }
     .action-btn {
       background: linear-gradient(45deg, #ff6b81, #ff4757);
@@ -82,15 +52,6 @@
     .action-btn:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(255,107,129,0.6);
-    }
-    .hidden {
-      display: none;
-    }
-    .cat-meme {
-      max-width: 300px;
-      border-radius: 15px;
-      margin: 30px auto;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     #music-control {
       position: fixed;
@@ -111,46 +72,77 @@
       color: white;
       font-size: 1.3em;
     }
-    .heart-background {
+    .decoration-heart {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
+      font-size: 1.5em;
+      opacity: 0;
+      animation: floatUp 4s linear forwards;
+      z-index: 10;
     }
-    .heart-background img {
-      position: absolute;
-      animation: floating-hearts 5s infinite;
-      z-index: -1;
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(20deg); opacity: 0; }
     }
-    @keyframes floating-hearts {
-      0% { transform: translateY(0); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-100px); opacity: 0; }
+    .love-letter {
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 25px;
+      margin: 30px auto;
+      max-width: 600px;
+      box-shadow: 0 10px 20px rgba(255,105,180,0.2);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s;
+    }
+    .love-letter.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .cat-meme {
+      max-width: 300px;
+      border-radius: 15px;
+      margin: 30px auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <div class="main-container">
-    <div class="heart-btn" onclick="revealContent()">❤️</div>
+    <div class="heart-btn" id="heart-btn">❤️</div>
     <h1>Für dich, meine Liebe ❤️</h1>
     <p>Klick auf das Herz, um eine Überraschung zu entdecken!</p>
 
-    <!-- Romantische Frage mit Ja/Nein -->
-    <div class="question-box hidden" id="love-question">
-      <p>Willst du mit mir zusammen sein? 💌</p>
-      <button class="action-btn" onclick="showResponse('yes')">Ja! ❤️</button>
-      <button class="action-btn" onclick="showResponse('no')">Nein 😢</button>
+    <!-- Musik-Steuerung -->
+    <div id="music-control" onclick="toggleMusic()">
+      <i class="fas fa-music"></i>
+    </div>
+    
+    <audio id="bg-music" loop>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      Dein Browser unterstützt keine Hintergrundmusik.
+    </audio>
+
+    <!-- Romantische Briefe und Bilder -->
+    <div class="love-letter hidden" id="letter1">
+      <p>Gözlerine her baktığımda, içimdeki bütün kelebekler kanat çırpıyor. Sen benim için sadece bir aşk değil, bir yaşam sebebisin. ❤️</p>
+    </div>
+    
+    <div class="love-letter hidden" id="letter2">
+      <p>Seninle geçirdiğim her an, zamanın durduğu bir rüya gibi. Kalbim seninle atıyor ve seninle daha güzel atıyor. 💖</p>
     </div>
 
-    <!-- Antworten -->
+    <div class="love-letter hidden" id="letter3">
+      <p>Seninle her şey mümkün, çünkü seninle her an bir ömre bedel. 💕</p>
+    </div>
+
     <div class="hidden" id="yes-response">
       <div class="love-letter visible">
         <p>YAY! 🎉 Dann sind wir jetzt zusammen, du gehörst mir und ich dir! 💘</p>
-        <div class="action-btn" onclick="showLoveLetter()">Lass uns weiter träumen...</div>
       </div>
       <img src="https://i.imgur.com/5b6WZgY.jpg" alt="Glückliche Katze" class="cat-meme">
     </div>
@@ -161,41 +153,43 @@
       </div>
       <img src="https://i.imgur.com/4GpDOGF.jpg" alt="Traurige Katze" class="cat-meme">
     </div>
-
-    <!-- Türkische Liebestexte -->
-    <div class="love-letter hidden" id="letter1">
-      <p>Gözlerine her baktığımda, içimdeki bütün kelebekler kanat çırpıyor. Sen benim için sadece bir aşk değil, bir yaşam sebebisin. ❤️</p>
-    </div>
-
-    <div class="love-letter hidden" id="letter2">
-      <p>Seninle geçirdiğim her an, zamanın durduğu bir rüya gibi. Kalbim seninle atıyor ve seninle daha güzel atıyor. 💖</p>
-    </div>
-
-    <!-- Weitere romantische Gifs -->
-    <div class="hidden" id="romantic-gif">
-      <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Romantisches Gif" class="cat-meme">
-    </div>
-
-    <!-- Türkische romantische Symbolik -->
-    <div class="love-letter hidden" id="turkish-culture">
-      <p>Seninle her an daha güzel, her saniye daha değerli. Beni tanıdığın için şanslıyım. 💖</p>
-      <p>Bu anı ölümsüzleştirmek istiyorum. 🌹</p>
+    
+    <!-- Ja/Nein Frage -->
+    <div class="question-box hidden" id="love-question">
+      <p>Willst du mit mir zusammen sein? 💌</p>
+      <button class="action-btn" onclick="showResponse('yes')">Ja! ❤️</button>
+      <button class="action-btn" onclick="showResponse('no')">Nein 😢</button>
     </div>
   </div>
-
-  <!-- Musik-Steuerung -->
-  <div id="music-control" onclick="toggleMusic()">
-    <i class="fas fa-music"></i>
-  </div>
-
-  <audio id="bg-music" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    Dein Browser unterstützt keine Hintergrundmusik.
-  </audio>
 
   <script>
+    let music = document.getElementById('bg-music');
+    let heartBtn = document.getElementById('heart-btn');
+    let currentStep = 0;
+    const steps = [
+      () => document.getElementById('love-question').classList.remove('hidden'),
+      () => document.getElementById('letter1').classList.remove('hidden'),
+      () => document.getElementById('letter2').classList.remove('hidden'),
+      () => document.getElementById('letter3').classList.remove('hidden')
+    ];
+
+    // Musik nur abspielen, wenn auf das Herz geklickt wird
+    heartBtn.addEventListener('click', function() {
+      music.play(); // Musik starten
+      heartBtn.innerHTML = '💖'; 
+      heartBtn.style.animation = 'none'; 
+
+      // Herz-Icons und romantische Briefe anzeigen
+      if (currentStep < steps.length) {
+        steps[currentStep]();
+        if (currentStep > 0) { 
+          createHearts(); // Fliegende Herzen erstellen
+        }
+        currentStep++;
+      }
+    });
+
     // Musik-Steuerung
-    const music = document.getElementById('bg-music');
     function toggleMusic() {
       if (music.paused) {
         music.play();
@@ -206,9 +200,27 @@
       }
     }
 
-    // Fliegende Herzen erstellen
+    // Funktion zum Erstellen der fliegenden Herzen
     function createHearts() {
       for (let i = 0; i < 8; i++) {
         const heart = document.createElement('div');
         heart.className = 'decoration-heart';
-        heart.innerHTML =
+        heart.innerHTML = ['❤️', '💖', '💕'][Math.floor(Math.random() * 3)]; // Zufällige Herzarten
+        heart.style.left = Math.random() * 80 + 10 + '%'; // Zufällige Position von links
+        heart.style.animationDuration = Math.random() * 3 + 2 + 's'; // Zufällige Dauer der Animation
+        document.body.appendChild(heart); // Herz hinzufügen
+      }
+    }
+
+    // Ja/Nein Antwort
+    function showResponse(answer) {
+      document.getElementById('love-question').classList.add('hidden');
+      if (answer === 'yes') {
+        document.getElementById('yes-response').classList.remove('hidden');
+      } else {
+        document.getElementById('no-response').classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
