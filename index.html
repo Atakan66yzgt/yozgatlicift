@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Für dich, Esma ❤️</title>
+  <title>Für dich, mein Schatz ❤️</title>
   <style>
     body {
       background-color: #fff0f6;
@@ -11,7 +11,7 @@
       padding: 20px;
       color: #d23669;
       margin: 0;
-      overflow-x: hidden;
+      overflow: hidden;
       position: relative;
     }
     h1 {
@@ -112,12 +112,6 @@
       color: white;
       font-size: 1.3em;
     }
-    .romantic-gif {
-      max-width: 400px;
-      margin: 20px auto;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
     .question-box {
       background-color: #fff;
       border-radius: 15px;
@@ -126,13 +120,22 @@
       max-width: 500px;
       box-shadow: 0 5px 15px rgba(255,105,180,0.2);
     }
+    .heart-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <div class="main-container">
     <div class="heart-btn" onclick="revealContent()">❤️</div>
-    <h1>Für dich, Esma ❤️</h1>
+    <h1>Für dich, meine Liebe ❤️</h1>
     <p>Klick auf das Herz, um eine Überraschung zu entdecken!</p>
 
     <!-- Romantische Frage mit Ja/Nein -->
@@ -157,18 +160,14 @@
       <img src="https://i.imgur.com/4GpDOGF.jpg" alt="Traurige Katze" class="cat-meme">
     </div>
 
-    <!-- Türkische Liebestexte -->
+    <!-- Türkische Liebestexte (werden nach und nach aufgedeckt) -->
     <div class="love-letter hidden" id="letter1">
       <p>Gözlerine her baktığımda, içimdeki bütün kelebekler kanat çırpıyor. Sen benim için sadece bir aşk değil, bir yaşam sebebisin. ❤️</p>
     </div>
-    
+
     <div class="love-letter hidden" id="letter2">
       <p>Seninle geçirdiğim her an, zamanın durduğu bir rüya gibi. Kalbim seninle atıyor ve seninle daha güzel atıyor. 💖</p>
     </div>
-
-    <!-- Romantische Gifs -->
-    <img src="https://media.giphy.com/media/3o6gE5Xgn2c7wO8XkM/giphy.gif" alt="Romantisches Gif" class="romantic-gif">
-
   </div>
 
   <!-- Musik-Steuerung -->
